@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Aluno</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      background: #007bff;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .resultado {
+      margin-top: 20px;
+      padding: 15px;
+      background: #e9ecef;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Registro de Aluno</h2>
+    <form id="formAluno">
+      <label>Nome:</label>
+      <input type="text" id="nome" required>
+
+      <label>Idade:</label>
+      <input type="number" id="idade" required>
+
+      <label>Curso:</label>
+      <input type="text" id="curso" required>
+
+      <button type="submit">Registrar</button>
+    </form>
+
+    <div class="resultado" id="resultado" style="display:none;"></div>
+  </div>
+
+  <script>
+    document.getElementById("formAluno").addEventListener("submit", function(e) {
+      e.preventDefault(); // evita recarregar a página
+
+      // Criando objeto aluno (JSON)
+      let aluno = {
+        nome: document.getElementById("nome").value,
+        idade: document.getElementById("idade").value,
+        curso: document.getElementById("curso").value
+      };
+
+      // Exibindo o resultado
+      let res = document.getElementById("resultado");
+      res.style.display = "block";
+      res.innerHTML = `
+        <h3>Dados do Aluno:</h3>
+        <p><strong>Nome:</strong> ${aluno.nome}</p>
+        <p><strong>Idade:</strong> ${aluno.idade}</p>
+        <p><strong>Curso:</strong> ${aluno.curso}</p>
+      `;
+    });
+  </script>
+</body>
+</html>
